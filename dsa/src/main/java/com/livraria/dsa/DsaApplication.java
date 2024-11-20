@@ -22,6 +22,7 @@ public class DsaApplication {
 	private final ReturnMaterialPresentation devolverMaterialPresentation;
 	private final LendMaterialPresentation emprestarMaterialPresentation;
 	private final ListActiveLoansPresentation listarEmprestimosPresentation;
+	private final ListSpecificMaterialPresentation listarMateriaisEspecificosPresentations;
 
 	public static void main(String[] args) {
 		ApplicationContext context = SpringApplication.run(DsaApplication.class, args);
@@ -44,6 +45,7 @@ public class DsaApplication {
 					"6. Emprestar Livro\n" +
 					"7. Devolver Livro\n" +
 					"8. Listar Emprestimos Ativos\n" +
+					"9. Listar materiais do tipo desejado\n" +
 					"0. Sair");
 
 			while (!sc.hasNextInt()) {
@@ -62,6 +64,7 @@ public class DsaApplication {
 				case 6 -> emprestarMaterialPresentation.emprestarMaterial(sc);
 				case 7 -> devolverMaterialPresentation.devolverMaterial(sc);
 				case 8 -> listarEmprestimosPresentation.listarEmprestimosAtivos();
+				case 9 -> listarMateriaisEspecificosPresentations.listarMateriais(sc);
 				case 0 -> System.out.println("\033[0;32mSaindo...\033[0m");
 				default -> System.out.println("\033[0;31mOpção inválida. Tente novamente.\033[0m");
 			}
