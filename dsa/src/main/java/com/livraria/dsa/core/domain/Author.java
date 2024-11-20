@@ -27,7 +27,6 @@ public class Author {
 
     @Override
     public String toString() {
-        return "Autor:" +
-                "nome = " + nome + "\n";
+        return "nome = " + nome;
     }
 }

@@ -27,17 +27,10 @@ public class Periodical extends Material {
 
     @Override
     public String toString() {
-        return "Periodico{" +
-                "issn='" + issn + '\'' +
-                ", volume='" + editionNumber + '\'' +
-                ",periodicidade" + periodicity +"\n"+
-                ", id=" + getId() +
-                ", titulo='" + getTitulo() + '\'' +
-                ", ano=" + getYear() +
-                ", totalExemplares=" + getTotalCopies() +
-                ", exemplaresDisponiveis=" + getCopiesAvailable() +
-                ", autor=" + getAutor() +
-                ", editora=" + getEditora() +
-                '}';
+        return super.toString() +
+                "issn = " + issn +"\n"+
+                "número da edição = " + editionNumber + "\n"+
+                "periodicidade = " + periodicity + "\n";
+
     }
 }

@@ -49,11 +49,11 @@ public class Material {
 
     @Override
     public String toString() {
-        return "Material " +
+        return "id = " + id + "\n" +
                 "titulo = " + titulo + "\n" +
                 "ano = " + year + "\n" +
                 "autor = " + autor + "\n" +
                 "editora = " + editora + "\n" +
-                "emprestado = " + borrowed ;
+                "emprestado = " + borrowed +"\n";
     }
 }

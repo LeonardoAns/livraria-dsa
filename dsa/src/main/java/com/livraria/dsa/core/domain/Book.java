@@ -21,4 +21,10 @@ public class Book extends Material {
         super(titulo, ano, totalExemplares, exemplaresDisponiveis, autor, editora);
         this.isbn = isbn;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                "isbn = " + isbn + "\n";
+    }
 }

@@ -32,7 +32,6 @@ public class Publisher {
 
     @Override
     public String toString() {
-        return "Editora:" +
-                "nome = " + nome + "\n";
+        return "nome = " + nome;
     }
 }
