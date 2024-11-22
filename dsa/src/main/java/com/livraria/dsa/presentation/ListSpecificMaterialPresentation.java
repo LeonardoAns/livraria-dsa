@@ -10,11 +10,13 @@ import java.util.Scanner;
 public class ListSpecificMaterialPresentation {
 
     private final ListBookPresentation listBooksPresentation;
-    private final ListTPeriodicalsPresentation listPeriodicalsPresentation;
+    private final ListPeriodicalsPresentation listPeriodicalsPresentation;
 
     public void listarMateriais(Scanner sc){
+        System.out.println();
         System.out.println("1. Listar Livros \n2. Listar Periodicos");
         int escolha = sc.nextInt();
+        System.out.println();
 
         switch (escolha){
             case 1 -> {

@@ -20,9 +20,11 @@ public class LendMaterialPresentation {
     private final FindAlunoByCpfUseCase findAlunoByCpfUseCase;
 
     public void emprestarMaterial(Scanner sc) {
+        System.out.println();
         System.out.print("Digite o CPF do aluno: ");
         Long cpf = sc.nextLong();
         sc.nextLine();
+        System.out.println();
 
         Student aluno = findAlunoByCpfUseCase.execute(cpf);
         if (aluno == null) {

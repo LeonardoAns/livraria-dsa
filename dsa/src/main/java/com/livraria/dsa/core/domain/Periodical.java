@@ -14,11 +14,11 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Periodical extends Material {
 
-    private String issn;
+    private Long issn;
     private Integer editionNumber;
     private String periodicity;
 
-    public Periodical(String titulo, int ano, int totalExemplares, int exemplaresDisponiveis, Author autor, Publisher editora, String issn, Integer numeroEdicao, String periodicidade) {
+    public Periodical(String titulo, int ano, int totalExemplares, int exemplaresDisponiveis, Author autor, Publisher editora, Long issn, Integer numeroEdicao, String periodicidade) {
         super(titulo, ano, totalExemplares, exemplaresDisponiveis, autor, editora);
         this.issn = issn;
         this.editionNumber = numeroEdicao;

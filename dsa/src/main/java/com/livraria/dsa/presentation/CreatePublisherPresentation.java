@@ -14,8 +14,11 @@ public class CreatePublisherPresentation {
     private final RegisterPublisherUseCase createEditoraUseCase;
 
     public void criarEditora(Scanner sc) {
+        System.out.println();
         System.out.print("Digite o nome da Editora: ");
         String nome = sc.nextLine();
+        System.out.println();
+
 
         boolean resposta = createEditoraUseCase.execute(new Publisher(nome));
         if (resposta) {

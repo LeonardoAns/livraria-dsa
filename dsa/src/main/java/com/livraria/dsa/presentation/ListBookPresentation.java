@@ -14,6 +14,7 @@ public class ListBookPresentation {
     private final ListBooksUseCase listBooksUseCase;
 
     public void listarLivros(){
+        System.out.println();
         System.out.println("Lista dos Materiais do tipo livro");
         List<Book> livros = this.listBooksUseCase.execute();
 

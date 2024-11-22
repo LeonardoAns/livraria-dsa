@@ -14,8 +14,11 @@ public class CreateAuthorPresentation {
     private final RegisterAuthorUseCase createAutorUseCase;
 
     public void criarAutor(Scanner sc) {
+        System.out.println();
         System.out.print("Digite o nome do Autor: ");
         String nome = sc.nextLine();
+        System.out.println();
+
 
         boolean resposta = createAutorUseCase.execute(new Author(nome));
         if (resposta) {

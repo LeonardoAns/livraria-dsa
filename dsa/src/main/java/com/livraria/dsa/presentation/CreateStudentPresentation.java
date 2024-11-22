@@ -15,6 +15,7 @@ public class CreateStudentPresentation {
     private final RegisterStudentUseCase createAlunoUseCase;
 
     public void criarAluno(Scanner sc) {
+        System.out.println();
         System.out.print("Digite o nome do aluno: ");
         String nome = sc.nextLine();
 
@@ -24,6 +25,8 @@ public class CreateStudentPresentation {
         System.out.print("Digite o CPF do aluno: ");
         Long cpf = sc.nextLong();
         sc.nextLine();
+        System.out.println();
+
 
         System.out.print("Digite a data de nascimento do aluno (yyyy-mm-dd): ");
         String dataNascimentoString = sc.nextLine();

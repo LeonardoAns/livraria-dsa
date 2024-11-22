@@ -1,6 +1,7 @@
 package com.livraria.dsa.presentation;
 
 import com.livraria.dsa.adapters.repositories.AuthorRepository;
+import com.livraria.dsa.adapters.repositories.PublisherRepository;
 import com.livraria.dsa.core.domain.Author;
 import com.livraria.dsa.core.domain.Publisher;
 import com.livraria.dsa.core.domain.Book;
@@ -24,8 +25,10 @@ public class CreateBookPresentation {
     private final FindPublisherByNameUseCase findEditoraByNameUseCase;
     private final RegisterPublisherUseCase createEditoraUseCase;
     private final RegisterMaterialUseCase createLivroUseCase;
+    private final PublisherRepository publisherRepository;
 
     public void criarLivro(Scanner sc) {
+        System.out.println();
         System.out.print("Digite o título do livro: ");
         String titulo = sc.nextLine();
 
@@ -47,7 +50,9 @@ public class CreateBookPresentation {
         String nomeEditora = sc.nextLine();
 
         System.out.print("Digite o ISBN: ");
-        int isbn = sc.nextInt();
+        Long isbn = sc.nextLong();
+        System.out.println();
+
 
         Author autor = autorRepository.findByNome(nomeAutor);
         if (autor == null) {
@@ -56,7 +61,7 @@ public class CreateBookPresentation {
             System.out.println("\033[0;33mAutor não encontrado, autor com o nome de " + autor.getNome() + " criado\033[0m");
         }
 
-        Publisher editora = findEditoraByNameUseCase.execute(nomeEditora);
+        Publisher editora = publisherRepository.findByNome(nomeEditora);
         if (editora == null) {
             createEditoraUseCase.execute(new Publisher(nomeEditora));
             editora = findEditoraByNameUseCase.execute(nomeEditora);
@@ -76,6 +81,7 @@ public class CreateBookPresentation {
         boolean resposta = createLivroUseCase.execute(livro);
         if (resposta) {
             System.out.println("\033[0;32mLivro criado com sucesso!\033[0m");
+            System.out.println();
         } else {
             System.out.println("\033[0;31mOcorreu um erro durante a criação.\033[0m");
         }

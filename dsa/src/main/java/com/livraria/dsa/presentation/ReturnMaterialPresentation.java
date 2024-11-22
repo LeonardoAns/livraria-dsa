@@ -20,12 +20,14 @@ public class ReturnMaterialPresentation {
     private final ReturnMaterialUseCase devolverLivroUseCase;
 
     public void devolverMaterial(Scanner sc) {
+        System.out.println();
         System.out.println("Digite o CPF do aluno: ");
         Long cpf = sc.nextLong();
         sc.nextLine();
 
         System.out.print("Digite o título do material: ");
         String titulo = sc.nextLine().trim();
+        System.out.println();
 
         Student aluno = findAlunoByCpfUseCase.execute(cpf);
         Material material = findMaterialByTituloUseCase.execute(titulo);

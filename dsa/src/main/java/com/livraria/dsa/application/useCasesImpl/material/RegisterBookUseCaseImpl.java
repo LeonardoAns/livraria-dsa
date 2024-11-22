@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class RegisterMaterialUseCaseImpl implements RegisterMaterialUseCase {
+public class RegisterBookUseCaseImpl implements RegisterMaterialUseCase {
 
     private final BookRepository livroRepository;
     private final MaterialRepository materialRepository;

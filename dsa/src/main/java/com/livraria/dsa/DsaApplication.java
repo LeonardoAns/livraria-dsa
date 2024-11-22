@@ -37,6 +37,7 @@ public class DsaApplication {
 		int escolha;
 		do {
 			System.out.println("Escolha uma opção:\n" +
+					"-------------------\n"+
 					"1. Criar Livro\n" +
 					"2. Criar Periodico\n" +
 					"3. Criar Autor\n" +
@@ -46,8 +47,8 @@ public class DsaApplication {
 					"7. Devolver Livro\n" +
 					"8. Listar Emprestimos Ativos\n" +
 					"9. Listar materiais do tipo desejado\n" +
-					"0. Sair");
-
+					"0. Sair\n"+
+					"-------------------");
 			while (!sc.hasNextInt()) {
 				System.out.println("Por favor, insira um número válido.");
 				sc.next();
@@ -69,7 +70,6 @@ public class DsaApplication {
 				default -> System.out.println("\033[0;31mOpção inválida. Tente novamente.\033[0m");
 			}
 		} while (escolha != 0);
-
 		sc.close();
 	}
 }

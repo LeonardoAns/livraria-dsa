@@ -14,10 +14,10 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Book extends Material {
 
-    private int isbn;
+    private Long isbn;
 
 
-    public Book(String titulo, int ano, int totalExemplares, int exemplaresDisponiveis, Author autor, Publisher editora, int isbn) {
+    public Book(String titulo, int ano, int totalExemplares, int exemplaresDisponiveis, Author autor, Publisher editora, Long isbn) {
         super(titulo, ano, totalExemplares, exemplaresDisponiveis, autor, editora);
         this.isbn = isbn;
     }

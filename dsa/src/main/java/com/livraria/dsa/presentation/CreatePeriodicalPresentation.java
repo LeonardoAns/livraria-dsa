@@ -26,6 +26,7 @@ public class CreatePeriodicalPresentation {
     private final RegisterPeriodicalUseCase createPeriodicoUseCase;
 
     public void criarPeriodico(Scanner sc) {
+        System.out.println();
         System.out.print("Digite o título do periódico: ");
         String titulo = sc.nextLine();
 
@@ -45,13 +46,15 @@ public class CreatePeriodicalPresentation {
         String nomeEditora = sc.nextLine();
 
         System.out.print("Digite o ISSN: ");
-        String issn = sc.nextLine();
+        Long issn = sc.nextLong();
 
         System.out.print("Digite o número da edição: ");
         int edicao = sc.nextInt();
 
         System.out.print("Digite a frequência/periodicidade (ex: 2 semanas): ");
         String periodicidade = sc.nextLine();
+        System.out.println();
+
 
 
         Author autor = autorRepository.findByNome(nomeAutor);

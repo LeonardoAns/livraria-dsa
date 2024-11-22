@@ -9,11 +9,12 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class ListTPeriodicalsPresentation {
+public class ListPeriodicalsPresentation {
 
     private final ListPeriodicalsUseCase listPeriodicalsUseCase;
 
     public void listarPeriodicos(){
+        System.out.println();
         System.out.println("Lista dos Materiais do tipo livro");
         List<Periodical> periodicos = this.listPeriodicalsUseCase.execute();
 
