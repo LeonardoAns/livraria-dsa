@@ -1,10 +1,12 @@
 package com.livraria.dsa.presentation;
 
+import com.livraria.dsa.adapters.repositories.LoanRepository;
+import com.livraria.dsa.adapters.repositories.MaterialRepository;
+import com.livraria.dsa.adapters.repositories.StudentRepository;
+import com.livraria.dsa.core.domain.Loan;
 import com.livraria.dsa.core.domain.Return;
 import com.livraria.dsa.core.domain.Student;
 import com.livraria.dsa.core.domain.Material;
-import com.livraria.dsa.core.useCases.student.FindAlunoByCpfUseCase;
-import com.livraria.dsa.core.useCases.material.FindMaterialByTitleUseCase;
 import com.livraria.dsa.core.useCases.student.ReturnMaterialUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -15,9 +17,10 @@ import java.util.Scanner;
 @Component
 public class ReturnMaterialPresentation {
 
-    private final FindAlunoByCpfUseCase findAlunoByCpfUseCase;
-    private final FindMaterialByTitleUseCase findMaterialByTituloUseCase;
+    private final MaterialRepository materialRepository;
+    private final LoanRepository loanRepository;
     private final ReturnMaterialUseCase devolverLivroUseCase;
+    private final StudentRepository studentRepository;
 
     public void devolverMaterial(Scanner sc) {
         System.out.println();
@@ -25,25 +28,40 @@ public class ReturnMaterialPresentation {
         Long cpf = sc.nextLong();
         sc.nextLine();
 
-        System.out.print("Digite o título do material: ");
-        String titulo = sc.nextLine().trim();
+        Student aluno = studentRepository.findByCpfWithMateriais(cpf);
+        if (aluno == null) {
+            System.out.println("\033[0;31mAluno não encontrado com o CPF: " + cpf + "\033[0m");
+            return;
+        }
+        System.out.println("Materiais emprestados para " + aluno.getName());
+        aluno.getMateriais().forEach(material ->
+                System.out.println("Id: " + material.getId() + " | Título: " + material.getTitulo())
+        );
+
+        System.out.print("Digite o Id do material: ");
+        Long materialId = sc.nextLong();
         System.out.println();
 
-        Student aluno = findAlunoByCpfUseCase.execute(cpf);
-        Material material = findMaterialByTituloUseCase.execute(titulo);
 
-        if (aluno == null || material == null) {
-            System.out.println("Aluno ou material não encontrado.");
+
+        Material material = materialRepository.findById(materialId).orElse(null);
+        if (material == null) {
+            System.out.println("\033[0;31mMaterial não encontrado com o ID: " + materialId + "\033[0m");
             return;
         }
 
+        Loan emprestimo = this.loanRepository.findActiveLoanByAlunoAndMaterial(cpf,materialId).orElse(null);
+        if(emprestimo == null){
+            System.out.println("Emprestimo não ecnontrado");
+            return;
+        }
+        this.loanRepository.delete(emprestimo);
 
         boolean resposta = devolverLivroUseCase.execute(new Return(aluno, material));
-
         if (resposta) {
-            System.out.println("Material devolvido com sucesso!");
+            System.out.println("\033[0;32mMaterial devolvido com sucesso!\033[0m");
         } else {
-            System.out.println("Erro ao devolver material.");
+            System.out.println("\033[0;31mErro ao devolver material.\033[0m");
         }
     }
 }

@@ -48,10 +48,9 @@ public class Loan {
                 "        ano=" + material.getYear() + ",\n" +
                 "        totalExemplares=" + material.getTotalCopies() + ",\n" +
                 "        exemplaresDisponiveis=" + material.getCopiesAvailable() + ",\n" +
-                "        "+ material.getAutor() +
-                "        " + material.getEditora()+
+                "        "+ material.getAutor() + "\n" +
+                "        " + material.getEditora()+ "\n" +
                 "        ativo=" + active + "\n";
     }
 
 }
-
