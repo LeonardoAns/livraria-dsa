@@ -8,12 +8,11 @@ import com.livraria.dsa.core.domain.Return;
 import com.livraria.dsa.core.domain.Student;
 import com.livraria.dsa.core.domain.Material;
 import com.livraria.dsa.core.useCases.student.ReturnMaterialUseCase;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
-@RequiredArgsConstructor
 @Component
 public class ReturnMaterialPresentation {
 
@@ -21,6 +20,14 @@ public class ReturnMaterialPresentation {
     private final LoanRepository loanRepository;
     private final ReturnMaterialUseCase devolverLivroUseCase;
     private final StudentRepository studentRepository;
+
+    @Autowired
+    public ReturnMaterialPresentation(MaterialRepository materialRepository, LoanRepository loanRepository, ReturnMaterialUseCase devolverLivroUseCase, StudentRepository studentRepository) {
+        this.materialRepository = materialRepository;
+        this.loanRepository = loanRepository;
+        this.devolverLivroUseCase = devolverLivroUseCase;
+        this.studentRepository = studentRepository;
+    }
 
     public void devolverMaterial(Scanner sc) {
         System.out.println();

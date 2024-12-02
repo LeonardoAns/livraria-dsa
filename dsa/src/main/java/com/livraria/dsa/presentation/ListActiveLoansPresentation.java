@@ -2,16 +2,20 @@ package com.livraria.dsa.presentation;
 
 import com.livraria.dsa.core.domain.Loan;
 import com.livraria.dsa.core.useCases.loan.ListActiveLoansUseCase;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@RequiredArgsConstructor
 @Component
 public class ListActiveLoansPresentation {
 
     private final ListActiveLoansUseCase listarEmprestimosAtivosUseCase;
+
+    @Autowired
+    public ListActiveLoansPresentation(ListActiveLoansUseCase listarEmprestimosAtivosUseCase) {
+        this.listarEmprestimosAtivosUseCase = listarEmprestimosAtivosUseCase;
+    }
 
     public void listarEmprestimosAtivos() {
         System.out.println();

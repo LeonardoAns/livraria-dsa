@@ -3,15 +3,18 @@ package com.livraria.dsa.application.useCasesImpl.publisher;
 import com.livraria.dsa.adapters.repositories.PublisherRepository;
 import com.livraria.dsa.core.domain.Publisher;
 import com.livraria.dsa.core.useCases.publisher.RegisterPublisherUseCase;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class RegisterPublisherUseCaseImpl implements RegisterPublisherUseCase {
 
     private final PublisherRepository editoraRepository;
 
+    @Autowired
+    public RegisterPublisherUseCaseImpl(PublisherRepository editoraRepository) {
+        this.editoraRepository = editoraRepository;
+    }
 
     @Override
     public boolean execute(Publisher editora) {

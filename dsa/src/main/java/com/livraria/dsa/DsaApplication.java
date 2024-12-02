@@ -2,7 +2,7 @@ package com.livraria.dsa;
 
 
 import com.livraria.dsa.presentation.*;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -11,7 +11,6 @@ import org.springframework.context.ApplicationContext;
 import java.util.Scanner;
 
 @SpringBootApplication
-@RequiredArgsConstructor
 public class DsaApplication {
 
 	private final CreateAuthorPresentation createAutorPresentation;
@@ -23,6 +22,27 @@ public class DsaApplication {
 	private final LendMaterialPresentation emprestarMaterialPresentation;
 	private final ListActiveLoansPresentation listarEmprestimosPresentation;
 	private final ListSpecificMaterialPresentation listarMateriaisEspecificosPresentations;
+
+	@Autowired
+	public DsaApplication(CreateAuthorPresentation createAutorPresentation,
+						  CreatePublisherPresentation createEditoraPresentation,
+						  CreateBookPresentation createLivroPresentation,
+						  CreatePeriodicalPresentation createPeriodicoPresentation,
+						  CreateStudentPresentation createAlunoPresentation,
+						  ReturnMaterialPresentation devolverMaterialPresentation,
+						  LendMaterialPresentation emprestarMaterialPresentation,
+						  ListActiveLoansPresentation listarEmprestimosPresentation,
+						  ListSpecificMaterialPresentation listarMateriaisEspecificosPresentations) {
+		this.createAutorPresentation = createAutorPresentation;
+		this.createEditoraPresentation = createEditoraPresentation;
+		this.createLivroPresentation = createLivroPresentation;
+		this.createPeriodicoPresentation = createPeriodicoPresentation;
+		this.createAlunoPresentation = createAlunoPresentation;
+		this.devolverMaterialPresentation = devolverMaterialPresentation;
+		this.emprestarMaterialPresentation = emprestarMaterialPresentation;
+		this.listarEmprestimosPresentation = listarEmprestimosPresentation;
+		this.listarMateriaisEspecificosPresentations = listarMateriaisEspecificosPresentations;
+	}
 
 	public static void main(String[] args) {
 		ApplicationContext context = SpringApplication.run(DsaApplication.class, args);

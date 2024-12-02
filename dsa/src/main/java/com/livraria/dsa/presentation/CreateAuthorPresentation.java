@@ -2,16 +2,20 @@ package com.livraria.dsa.presentation;
 
 import com.livraria.dsa.core.domain.Author;
 import com.livraria.dsa.core.useCases.author.RegisterAuthorUseCase;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
-@RequiredArgsConstructor
 @Component
 public class CreateAuthorPresentation {
 
     private final RegisterAuthorUseCase createAutorUseCase;
+
+    @Autowired
+    public CreateAuthorPresentation(RegisterAuthorUseCase createAutorUseCase) {
+        this.createAutorUseCase = createAutorUseCase;
+    }
 
     public void criarAutor(Scanner sc) {
         System.out.println();

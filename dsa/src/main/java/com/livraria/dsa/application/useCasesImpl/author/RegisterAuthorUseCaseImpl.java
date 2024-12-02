@@ -3,14 +3,18 @@ package com.livraria.dsa.application.useCasesImpl.author;
 import com.livraria.dsa.adapters.repositories.AuthorRepository;
 import com.livraria.dsa.core.domain.Author;
 import com.livraria.dsa.core.useCases.author.RegisterAuthorUseCase;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class RegisterAuthorUseCaseImpl implements RegisterAuthorUseCase {
 
     private final AuthorRepository autorRepository;
+
+    @Autowired
+    public RegisterAuthorUseCaseImpl(AuthorRepository autorRepository) {
+        this.autorRepository = autorRepository;
+    }
 
     @Override
     public boolean execute(Author autor) {

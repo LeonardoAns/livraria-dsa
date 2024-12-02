@@ -3,14 +3,18 @@ package com.livraria.dsa.application.useCasesImpl.material;
 import com.livraria.dsa.adapters.repositories.PeriodicalRepository;
 import com.livraria.dsa.core.domain.Periodical;
 import com.livraria.dsa.core.useCases.material.RegisterPeriodicalUseCase;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class RegisterPeriodicalUseCaseImpl implements RegisterPeriodicalUseCase {
 
     private final PeriodicalRepository periodicoRepository;
+
+    @Autowired
+    public RegisterPeriodicalUseCaseImpl(PeriodicalRepository periodicoRepository) {
+        this.periodicoRepository = periodicoRepository;
+    }
 
     @Override
     public boolean execute(Periodical periodico) {

@@ -6,19 +6,23 @@ import com.livraria.dsa.adapters.repositories.MaterialRepository;
 import com.livraria.dsa.core.domain.Student;
 import com.livraria.dsa.core.domain.Loan;
 import com.livraria.dsa.core.useCases.loan.LendMaterialUseCase;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@RequiredArgsConstructor
-@Slf4j
 public class LendBookUseCaseImpl implements LendMaterialUseCase {
 
     private final MaterialRepository materialRepository;
     private final StudentRepository alunoRepository;
     private final LoanRepository emprestimoRepository;
+
+    @Autowired
+    public LendBookUseCaseImpl(MaterialRepository materialRepository, StudentRepository alunoRepository, LoanRepository emprestimoRepository) {
+        this.materialRepository = materialRepository;
+        this.alunoRepository = alunoRepository;
+        this.emprestimoRepository = emprestimoRepository;
+    }
 
     @Override
     @Transactional

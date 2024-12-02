@@ -1,16 +1,21 @@
 package com.livraria.dsa.presentation;
 
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
 @Component
-@RequiredArgsConstructor
 public class ListSpecificMaterialPresentation {
 
     private final ListBookPresentation listBooksPresentation;
     private final ListPeriodicalsPresentation listPeriodicalsPresentation;
+
+    @Autowired
+    public ListSpecificMaterialPresentation(ListBookPresentation listBooksPresentation, ListPeriodicalsPresentation listPeriodicalsPresentation) {
+        this.listBooksPresentation = listBooksPresentation;
+        this.listPeriodicalsPresentation = listPeriodicalsPresentation;
+    }
 
     public void listarMateriais(Scanner sc){
         System.out.println();

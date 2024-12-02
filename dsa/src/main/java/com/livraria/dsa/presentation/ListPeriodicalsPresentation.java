@@ -2,16 +2,20 @@ package com.livraria.dsa.presentation;
 
 import com.livraria.dsa.core.domain.Periodical;
 import com.livraria.dsa.core.useCases.material.ListPeriodicalsUseCase;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-@RequiredArgsConstructor
 public class ListPeriodicalsPresentation {
 
     private final ListPeriodicalsUseCase listPeriodicalsUseCase;
+
+    @Autowired
+    public ListPeriodicalsPresentation(ListPeriodicalsUseCase listPeriodicalsUseCase) {
+        this.listPeriodicalsUseCase = listPeriodicalsUseCase;
+    }
 
     public void listarPeriodicos(){
         System.out.println();

@@ -9,12 +9,11 @@ import com.livraria.dsa.core.useCases.author.FindAuthorByNameUseCase;
 import com.livraria.dsa.core.useCases.publisher.RegisterPublisherUseCase;
 import com.livraria.dsa.core.useCases.publisher.FindPublisherByNameUseCase;
 import com.livraria.dsa.core.useCases.material.RegisterPeriodicalUseCase;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
-@RequiredArgsConstructor
 @Component
 public class CreatePeriodicalPresentation {
 
@@ -24,6 +23,16 @@ public class CreatePeriodicalPresentation {
     private final FindPublisherByNameUseCase findEditoraByNameUseCase;
     private final RegisterPublisherUseCase createEditoraUseCase;
     private final RegisterPeriodicalUseCase createPeriodicoUseCase;
+
+    @Autowired
+    public CreatePeriodicalPresentation(AuthorRepository autorRepository, RegisterAuthorUseCase createAutorUseCase, FindAuthorByNameUseCase findAutorByNomeUseCase, FindPublisherByNameUseCase findEditoraByNameUseCase, RegisterPublisherUseCase createEditoraUseCase, RegisterPeriodicalUseCase createPeriodicoUseCase) {
+        this.autorRepository = autorRepository;
+        this.createAutorUseCase = createAutorUseCase;
+        this.findAutorByNomeUseCase = findAutorByNomeUseCase;
+        this.findEditoraByNameUseCase = findEditoraByNameUseCase;
+        this.createEditoraUseCase = createEditoraUseCase;
+        this.createPeriodicoUseCase = createPeriodicoUseCase;
+    }
 
     public void criarPeriodico(Scanner sc) {
         System.out.println();

@@ -7,16 +7,22 @@ import com.livraria.dsa.core.domain.Student;
 import com.livraria.dsa.core.domain.Return;
 import com.livraria.dsa.core.domain.Material;
 import com.livraria.dsa.core.useCases.student.ReturnMaterialUseCase;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class ReturnMaterialUseCaseImpl implements ReturnMaterialUseCase {
 
     private final MaterialRepository materialRepository;
     private final StudentRepository alunoRepository;
     private final ReturnRepository devolucaoRepository;
+
+    @Autowired
+    public ReturnMaterialUseCaseImpl(MaterialRepository materialRepository, StudentRepository alunoRepository, ReturnRepository devolucaoRepository) {
+        this.materialRepository = materialRepository;
+        this.alunoRepository = alunoRepository;
+        this.devolucaoRepository = devolucaoRepository;
+    }
 
     @Override
     public boolean execute(Return devolucao) {

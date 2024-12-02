@@ -1,14 +1,8 @@
 package com.livraria.dsa.core.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Loan {
 
     @Id
@@ -25,10 +19,52 @@ public class Loan {
 
     private boolean active;
 
+    public Loan() {
+    }
+
     public Loan(Student aluno, Material material, boolean ativo) {
         this.aluno = aluno;
         this.material = material;
         this.active = ativo;
+    }
+
+    public Loan(Long id, Student aluno, Material material, boolean active) {
+        this.id = id;
+        this.aluno = aluno;
+        this.material = material;
+        this.active = active;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Student getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Student aluno) {
+        this.aluno = aluno;
+    }
+
+    public Material getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(Material material) {
+        this.material = material;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     @Override

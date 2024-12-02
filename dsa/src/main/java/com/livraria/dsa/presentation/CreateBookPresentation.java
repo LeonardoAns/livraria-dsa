@@ -10,12 +10,11 @@ import com.livraria.dsa.core.useCases.author.FindAuthorByNameUseCase;
 import com.livraria.dsa.core.useCases.publisher.RegisterPublisherUseCase;
 import com.livraria.dsa.core.useCases.publisher.FindPublisherByNameUseCase;
 import com.livraria.dsa.core.useCases.material.RegisterMaterialUseCase;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
-@RequiredArgsConstructor
 @Component
 public class CreateBookPresentation {
 
@@ -26,6 +25,17 @@ public class CreateBookPresentation {
     private final RegisterPublisherUseCase createEditoraUseCase;
     private final RegisterMaterialUseCase createLivroUseCase;
     private final PublisherRepository publisherRepository;
+
+    @Autowired
+    public CreateBookPresentation(AuthorRepository autorRepository, RegisterAuthorUseCase createAutorUseCase, FindAuthorByNameUseCase findAutorByNomeUseCase, FindPublisherByNameUseCase findEditoraByNameUseCase, RegisterPublisherUseCase createEditoraUseCase, RegisterMaterialUseCase createLivroUseCase, PublisherRepository publisherRepository) {
+        this.autorRepository = autorRepository;
+        this.createAutorUseCase = createAutorUseCase;
+        this.findAutorByNomeUseCase = findAutorByNomeUseCase;
+        this.findEditoraByNameUseCase = findEditoraByNameUseCase;
+        this.createEditoraUseCase = createEditoraUseCase;
+        this.createLivroUseCase = createLivroUseCase;
+        this.publisherRepository = publisherRepository;
+    }
 
     public void criarLivro(Scanner sc) {
         System.out.println();

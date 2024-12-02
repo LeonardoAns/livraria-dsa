@@ -1,15 +1,10 @@
 package com.livraria.dsa.core.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
 
 import java.util.List;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 public class Author {
 
@@ -23,6 +18,39 @@ public class Author {
 
     public Author(String nome) {
         this.nome = nome;
+    }
+
+    public Author() {
+    }
+
+    public Author(Long id, String nome, List<Material> materiaisEscritos) {
+        this.id = id;
+        this.nome = nome;
+        this.materiaisEscritos = materiaisEscritos;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public List<Material> getMateriaisEscritos() {
+        return materiaisEscritos;
+    }
+
+    public void setMateriaisEscritos(List<Material> materiaisEscritos) {
+        this.materiaisEscritos = materiaisEscritos;
     }
 
     @Override

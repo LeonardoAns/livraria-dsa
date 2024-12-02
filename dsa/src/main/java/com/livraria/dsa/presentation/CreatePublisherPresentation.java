@@ -2,16 +2,20 @@ package com.livraria.dsa.presentation;
 
 import com.livraria.dsa.core.domain.Publisher;
 import com.livraria.dsa.core.useCases.publisher.RegisterPublisherUseCase;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
-@RequiredArgsConstructor
 @Component
 public class CreatePublisherPresentation {
 
     private final RegisterPublisherUseCase createEditoraUseCase;
+
+    @Autowired
+    public CreatePublisherPresentation(RegisterPublisherUseCase createEditoraUseCase) {
+        this.createEditoraUseCase = createEditoraUseCase;
+    }
 
     public void criarEditora(Scanner sc) {
         System.out.println();

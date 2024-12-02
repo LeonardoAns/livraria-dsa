@@ -1,15 +1,10 @@
 package com.livraria.dsa.core.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
 
 import java.util.List;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 public class Publisher {
 
@@ -21,6 +16,8 @@ public class Publisher {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER, mappedBy = "editora")
     private List<Material> materiaisLancados;
 
+    public Publisher(){}
+
     public Publisher(String nome, List<Material> materiaisLancados) {
         this.nome = nome;
         this.materiaisLancados = materiaisLancados;
@@ -28,6 +25,36 @@ public class Publisher {
 
     public Publisher(String nome) {
         this.nome = nome;
+    }
+
+    public Publisher(Long id, String nome, List<Material> materiaisLancados) {
+        this.id = id;
+        this.nome = nome;
+        this.materiaisLancados = materiaisLancados;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public List<Material> getMateriaisLancados() {
+        return materiaisLancados;
+    }
+
+    public void setMateriaisLancados(List<Material> materiaisLancados) {
+        this.materiaisLancados = materiaisLancados;
     }
 
     @Override

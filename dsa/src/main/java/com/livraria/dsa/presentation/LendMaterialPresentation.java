@@ -6,14 +6,13 @@ import com.livraria.dsa.core.domain.Loan;
 import com.livraria.dsa.core.domain.Material;
 import com.livraria.dsa.core.useCases.student.FindAlunoByCpfUseCase;
 import com.livraria.dsa.core.useCases.loan.LendMaterialUseCase;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
-@RequiredArgsConstructor
 @Component
 public class LendMaterialPresentation {
 
@@ -21,6 +20,14 @@ public class LendMaterialPresentation {
     private final MaterialRepository materialRepository;
     private final CreateStudentPresentation createStudentPresentation;
     private final FindAlunoByCpfUseCase findAlunoByCpfUseCase;
+
+    @Autowired
+    public LendMaterialPresentation(LendMaterialUseCase lendMaterialUseCase, MaterialRepository materialRepository, CreateStudentPresentation createStudentPresentation, FindAlunoByCpfUseCase findAlunoByCpfUseCase) {
+        this.lendMaterialUseCase = lendMaterialUseCase;
+        this.materialRepository = materialRepository;
+        this.createStudentPresentation = createStudentPresentation;
+        this.findAlunoByCpfUseCase = findAlunoByCpfUseCase;
+    }
 
     public void emprestarMaterial(Scanner scanner) {
         try {

@@ -8,11 +8,10 @@ import com.livraria.dsa.core.domain.Book;
 import com.livraria.dsa.core.useCases.author.RegisterAuthorUseCase;
 import com.livraria.dsa.core.useCases.publisher.RegisterPublisherUseCase;
 import com.livraria.dsa.core.useCases.material.RegisterMaterialUseCase;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class RegisterBookUseCaseImpl implements RegisterMaterialUseCase {
 
     private final BookRepository livroRepository;
@@ -21,6 +20,16 @@ public class RegisterBookUseCaseImpl implements RegisterMaterialUseCase {
     private final AuthorRepository autorRepository;
     private final RegisterPublisherUseCase createEditoraUseCase;
     private final RegisterAuthorUseCase createAutorUseCase;
+
+    @Autowired
+    public RegisterBookUseCaseImpl(BookRepository livroRepository, MaterialRepository materialRepository, PublisherRepository editoraRepository, AuthorRepository autorRepository, RegisterPublisherUseCase createEditoraUseCase, RegisterAuthorUseCase createAutorUseCase) {
+        this.livroRepository = livroRepository;
+        this.materialRepository = materialRepository;
+        this.editoraRepository = editoraRepository;
+        this.autorRepository = autorRepository;
+        this.createEditoraUseCase = createEditoraUseCase;
+        this.createAutorUseCase = createAutorUseCase;
+    }
 
     @Override
     public boolean execute(Book livro) {

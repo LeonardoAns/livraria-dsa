@@ -3,14 +3,18 @@ package com.livraria.dsa.application.useCasesImpl.student;
 import com.livraria.dsa.adapters.repositories.StudentRepository;
 import com.livraria.dsa.core.domain.Student;
 import com.livraria.dsa.core.useCases.student.RegisterStudentUseCase;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class RegisterStudentUseCaseImpl implements RegisterStudentUseCase {
 
     private final StudentRepository alunoRepository;
+
+    @Autowired
+    public RegisterStudentUseCaseImpl(StudentRepository alunoRepository) {
+        this.alunoRepository = alunoRepository;
+    }
 
     @Override
     public boolean execute(Student aluno) {
